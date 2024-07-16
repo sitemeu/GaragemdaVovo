@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem da Vovo</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li class="wow fadeInLeft" data-wow-delay="0.1s">
+                <a href="#sobre" class="scroll-to">Sobre</a>
+            </li>
+            <li class="wow fadeInLeft" data-wow-delay="0.2s">
+                <a href="#bebidas" class="scroll-to">Bebidas</a>
+            </li>
+            <li class="wow fadeInLeft" data-wow-delay="0.3s">
+                <a href="#lanches" class="scroll-to">Lanches</a>
+            </li>
+            <li class="wow fadeInLeft" data-wow-delay="0.8s">
+                <a href="#porcoes" class="scroll-to">Porções</a>
+            </li>
+            <li class="wow fadeInLeft" data-wow-delay="0.8s">
+                <a href="#contato" class="scroll-to">Contato</a>
+            </li>
+        </ul>
+    </header>
+
+    <section class="section2 bg1" id="sobre">
+        <h2 class="titulo1 wow fadeInDown">Sobre</h2>
+        <p class="wow fadeInUp">
+            <!-- Informações sobre o estabelecimento -->
+        </p>
+    </section>
+
+    <section class="section3" id="lanches">
+        <h2 class="titulo1 wow fadeInDown">Lanches</h2>
+        <table class="wow fadeInUp">
+            <tr>
+                <td>Salada e Burguer</td>
+                <td>15$</td>
+            </tr>
+            <tr>
+                <td>Bacon</td>
+                <td>20$</td>
+            </tr>
+            <tr>
+                <td>Tudão e Tudo de frango</td>
+                <td>25$</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="section4" id="porcoes">
+        <h2 class="titulo1 wow fadeInDown">Porções</h2>
+        <table class="wow fadeInUp">
+            <tr>
+                <td>Tilapia</td>
+                <td>25$</td>
+            </tr>
+            <tr>
+                <td>Porquinho empanado</td>
+                <td>25$</td>
+            </tr>
+            <tr>
+                <td>Batata</td>
+                <td>25$</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="section13" id="bebidas">
+        <h2 class="titulo1 wow fadeInDown">Bebidas</h2>
+        <table class="wow fadeInUp">
+            <tr>
+                <td>Refrigerante</td>
+                <td>5$</td>
+            </tr>
+            <tr>
+                <td>
+                    Refrigerante litro
+                </td>
+                    <td>
+                        9$
+                </td>
+                <tr>
+                    <td>
+                        Limonada natural
+                    </td>
+                    <td>
+                        12$
+                    </td>
+                </tr>
+            <tr>
+                <td>Suco</td>
+                <td>7$</td>
+            </tr>
+            <tr>
+                <td>Cerveja</td>
+                <td>10$</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="section8" id="formulario">
+        <h2 class="titulo1 wow fadeInDown">Finalizar pedido?</h2>
+        <form id="order-form" class="wow fadeInUp">
+            <div class="mc-field-group">
+                <input type="text" name="FNAME" class="text" id="name" placeholder="Nome" required>
+            </div>
+            <div class="mc-field-group">
+                <input type="tel" name="PHONE" class="REQ_CSS" id="phone" placeholder="Telefone" required>
+            </div>
+            <div class="clear foot">
+                <button type="button" id="send-order" class="button">Pedir</button>
+            </div>
+        </form>
+    </section>
+
+    <footer class="bg1">
+        <section class="section9" id="contato">
+            <h2 class="titulo1 wow fadeInDown">Contato</h2>
+            <ul>
+                <li class="wow fadeInLeft" data-wow-delay="0.1s">(17) 99708-1907</li>
+                <li class="wow fadeInLeft" data-wow-delay="0.2s">
+                    Vicente Valentim Valente, Jardim Primaveira
+                    <br>São Paulo / SP
+                </li>
+            </ul>
+            <div class="section12 wow fadeInUp">
+                <h2> &copy; 2024 - Todos os direitos reservados</h2>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind('[data-fancybox="gallery"]', {});
+    </script>
+    <script>
+        document.querySelectorAll('a.scroll-to').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 106,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('send-order').addEventListener('click', function () {
+            const name = encodeURIComponent(document.getElementById('name').value);
+            const phone = encodeURIComponent(document.getElementById('phone').value);
+            const description = encodeURIComponent(document.getElementById('description').value);
+
+            const message = `Olá! Gostaria de fazer um pedido.\ ${name} \nDescrição do pedido: ${description}`;
+            const whatsappUrl = `https://wa.me/+5517997081907?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+    <script src="./js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>
