@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Vendas</title>
+    <link rel="stylesheet" href="d2.css">
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem("logado") !== "true") {
+            window.location.href = "l.html";
+        }
+    </script>
+
+    <header>
+        <h1>Painel de Vendas</h1>
+        <button onclick="voltar()">Voltar ao Cardápio</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Vendas Realizadas</h2>
+            <ul id="listaVendas"></ul>
+            <p id="totalDia"></p>
+        </section>
+    </main>
+
+    <script>
+        function voltar() {
+            window.location.href = "a.html";
+        }
+
+        function carregarVendas() {
+            const vendas = JSON.parse(localStorage.getItem("vendas") || "[]");
+            const lista = document.getElementById("listaVendas");
+            const totalEl = document.getElementById("totalDia");
+            lista.innerHTML = "";
+            let total = 0;
+
+            vendas.forEach(venda => {
+                const li = document.createElement("li");
+                li.textContent = `${venda.nome} - R$ ${venda.preco.toFixed(2)}`;
+                lista.appendChild(li);
+                total += venda.preco;
+            });
+
+            totalEl.textContent = `Total do dia: R$ ${total.toFixed(2)}`;
+        }
+
+        carregarVendas();
+    </script>
+</body>
+
+</html>

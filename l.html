@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Cardápio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1e1e1e, #2b2b2b);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: slideUpFadeIn 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUpFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #f1f1f1;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #555;
+            color: white;
+        }
+
+        input::placeholder {
+            color: #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1f8738;
+        }
+
+        .erro {
+            color: #ff4d4d;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 20px;
+            }
+
+            input,
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Entrar no Sistema</h2>
+        <input type="text" id="usuario" placeholder="Usuário" />
+        <input type="password" id="senha" placeholder="Senha" />
+        <button onclick="fazerLogin()">Entrar</button>
+        <div id="mensagemErro" class="erro"></div>
+    </div>
+
+    <script>
+        function fazerLogin() {
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+            const erro = document.getElementById("mensagemErro");
+
+            if (usuario === "wallacy" && senha === "150723") {
+                localStorage.setItem("logado", "true");
+                window.location.href = "a.html";
+            } else {
+                erro.innerText = "Usuário ou senha incorretos.";
+            }
+        }
+    </script>
+</body>
+
+</html>

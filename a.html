@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Digital</title>
+    <link rel="stylesheet" href="b.css">
+</head>
+
+<!-- Verifica se está logado -->
+<script>
+    if (localStorage.getItem("logado") !== "true") {
+        window.location.href = "l.html";
+    }
+</script>
+
+<body>
+    <header>
+        <button onclick="logout()" style="float: right; margin: 10px;">Sair</button>
+        <h1>Cardápio Digital</h1>
+        <script>
+            function logout() {
+                localStorage.removeItem("logado");
+                window.location.href = "l.html";
+            }
+        </script>
+    </header>
+
+    <main>
+        <!-- Abas Admin -->
+        <div class="abas-admin">
+            <button onclick="mostrarAba('mesas')">Mesas</button>
+            <button onclick="mostrarAba('avulsos')">Pedidos Avulsos</button>
+            <button onclick="mostrarPainel('historico')">Histórico</button>
+        </div>
+
+        <!-- Aba: Mesas -->
+        <section id="mesas" style="display: block;">
+            <h2>Mesas</h2>
+            <div id="listaMesas" class="mesas-grid"></div>
+        </section>
+
+        <!-- Aba: Pedidos Avulsos -->
+        <section id="avulsos" style="display: none;">
+            <h2>Pedidos Avulsos</h2>
+            <ul id="listaAvulsos"></ul>
+        </section>
+
+        <!-- Painel da Mesa Selecionada -->
+        <section id="painelMesa" class="painel-mesa" style="display: none;">
+            <h2 id="tituloMesa"></h2>
+            <div>Tempo desde o pedido: <span id="tempoMesa">00:00:00</span></div>
+
+            <div id="categorias"></div>
+
+            <h3>Comanda</h3>
+            <ul id="itensComanda"></ul>
+            <p id="totalComanda"></p>
+
+            <button onclick="imprimirComanda()">Imprimir Comanda</button>
+            <button onclick="fecharComanda()">Fechar Comanda</button>
+            <button onclick="voltarMesas()">Voltar</button>
+            <button onclick="cancelarComanda()" style="background-color: #ffc107; color: black;">
+                Cancelar Comanda
+            </button>
+        </section>
+
+        <!-- Painel Histórico de Comandas -->
+        <section id="painelHistorico" style="display:none;">
+            <h2>Histórico de Comandas Fechadas</h2>
+            <ul id="listaHistorico" style="white-space: pre-wrap; font-family: monospace;"></ul>
+            <button onclick="mostrarPainel('mesas')">Voltar para Mesas</button>
+        </section>
+    </main>
+
+    <script src="c.js"></script>
+</body>
+
+</html>
